@@ -16,53 +16,76 @@
             <p id="UserGuess">
     </div>
     <script type="text/javascript">
+    var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     var losses = 0
     var wins = 0
-    var tie = 0
+    var guesses = 10
 
-
+    var computerChoice = alphabet.[Math.floor(Math.random() * alphabet.length)];
+    console.log(computerChoice)
     // This function is run whenever the user presses a key.
-    document.onkeyup = function(event) {
+    document.onkeypress = function(event) {
 
         // Determines which key was pressed.
         var userGuess = event.key;
-        var computerGuess = event.key; 
-
-        // Randomly chooses a choice from the options array. This is the Computer's guess
-
-        // Alerts the key the user pressed (userGuess).
-        // alert("User guess: " + userGuess);
-        alert("User guess: " + userGuess)
-
-        // Alerts the Computer's guess.
-        // alert("Computer guess: " + computerGuess);
-        alert("Computer guess: " + computerGuess)
-
-        function computerGuess() {
-            var text = "";
-            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-
-            for (var i = 0; i < 5; i++)
-                text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-            return text;
+        if (userGuess === computerChoice) {
+            wins++;
+        } else {
+            guesses--;
         }
 
-        console.log(computerGuess());
+        if (guesses = 0) {
+            losses++
+        }
     }
+
+    var computerGuess = event.key;
+    if (computerGuess === computerChoice) {
+        wins++;
+    } else {
+        guesses--;
+    }
+    if (guesses = 0) {
+        losses++
+    }
+    }
+
+    // Randomly chooses a choice from the options array. This is the Computer's guess
+    function psychic() {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+        for (var i = 0; i < 5; i++)
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+        return text;
+    }
+    // Alerts the key the user pressed (userGuess).
+    alert("User guess: " + userGuess);
+    // alert("User guess: " + userGuess)
+
+    // Alerts the Computer's guess.
+    alert("Computer guess: " + computerGuess);
+    // alert("Computer guess: " + computerGuess)
+
+
+
+    // console.log(computerGuess());
+    // console.log(userGuess());
+    // }
     document.getElementById("Win").innerHTML = 'wins ' + wins
-    document.getElementById("Tie").innerHTML = 'tie ' + tie
+    document.getElementById("Guess").innerHTML = 'Gueses left: ' + guesses
     document.getElementById("Loss").innerHTML = 'losses ' + losses
 
     document.getElementById("ComputerGuess").innerHTML = 'Computer Guess ' + computerGuess
     document.getElementById("UserGuess").innerHTML = 'User Guess ' + userGuess
 
-    document.getElementById("ComputerGuess").innerHTML = 'Computer Guess ' + computerGuess
-    document.getElementById("UserGuess").innerHTML = 'User Guess ' + userGuess
+    // document.getElementById("ComputerGuess").innerHTML = 'Computer Guess ' + computerGuess
+    // document.getElementById("UserGuess").innerHTML = 'User Guess ' + userGuess
 
-    document.getElementById("Win").innerHTML = 'wins ' + wins
-    document.getElementById("Tie").innerHTML = 'tie ' + tie
-    document.getElementById("Loss").innerHTML = 'losses ' + losses
+    // document.getElementById("Win").innerHTML = 'wins ' + wins
+    // document.getElementById("Tie").innerHTML = 'tie ' + tie
+    // document.getElementById("Loss").innerHTML = 'losses ' + losses
     </script>
 </body>
 
